@@ -1,50 +1,82 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Отчёт о влиянии изменений:
+- Изменение версии: 0.0.0 (документ-шаблон без версии) -> 1.0.0
+- Изменённые принципы: нет (предыдущий документ содержит только заполнители)
+- Добавленные принципы: единый источник истины в спецификации; стабильность предметной области;
+  контроль денежных операций человеком; детерминированная основа; неизменяемый журнал действий;
+  минимальные права и данные; проверяемые требования
+- Добавленные разделы: Технические ограничения; Процесс разработки и контроля соответствия
+- Удалённые разделы: все разделы-заполнители
+- Отложенные пункты: нет
+-->
 
-## Core Principles
+# Конституция ИУС благотворительной организации
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+## Основные принципы
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### I. Единый источник истины в спецификации
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+Любое изменение системы должно начинаться с изменения спецификации в репозитории. Код,
+модели данных, отчёты и конфигурации должны ссылаться на реализуемое ими требование.
+Изменение без ссылки на требование не должно приниматься.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Стабильность предметной области
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+Процессы, роли, документы и отчётность благотворительной организации остаются неизменными.
+Современные подходы могут применяться только для реализации предписанного предметного
+поведения. Смысл предметной области и рабочие процессы не должны изменяться ради удобства
+реализации.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### III. Контроль денежных операций человеком
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+Только уполномоченный пользователь обязан утверждать платеж, проводить финансовый документ
+или изменять денежные суммы. ИИ и автоматика могут готовить и предлагать действия, но не
+должны выполнять их. Каждое привилегированное финансовое действие должно проходить
+аудируемое пользовательское гейтовое утверждение.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### IV. Детерминированная основа
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+Каждая функция с ИИ должна иметь детерминированный запасной вариант, воспроизводящий требуемый
+результат при отключённом ИИ. ИИ не должен становиться обязательным условием для расчёта
+платежей, планов или работы основной системы.
 
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+### V. Неизменяемый журнал действий
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Система обязана фиксировать исполнителя действия, время его выполнения и состояние данных,
+документов и справочников до и после изменения. Записи журнала должны быть только
+добавляемыми и защищёнными от изменения или удаления. Для действий ИИ-агента должен указываться
+гейт, на котором действие было утверждено.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+### VI. Минимальные права и данные
+
+Каждая роль и интеграционный инструмент должны получать только необходимые для работы права.
+Персональные данные должны защищаться в соответствии с Федеральным законом № 152-ФЗ и не
+должны передаваться за пределы системы без надлежащего маскирования или законного основания.
+
+### VII. Проверяемые требования
+
+Каждое требование должно быть записано в формате EARS и иметь явный критерий приёмки.
+Критерии приёмки должны быть наблюдаемыми и проверяемыми. Требование без критерия приёмки не
+должно попадать в план реализации.
+
+## Технические ограничения
+
+- Системой хранения основной записи должна быть реляционная база данных.
+- Модели и спецификации должны храниться в Git в текстовых форматах.
+- Внешние интеграции должны использовать описанные интерфейсы для банка и электронных таблиц.
+- Расчёты взносов и планов должны выполняться без ИИ.
+- Вывод ИИ не должен быть единственным основанием для финансовых или предметно-критичных решений.
+
+## Процесс разработки и контроля соответствия
+
+- Изменения спецификации должны предшествовать изменениям реализации.
+- Проверки должны подтверждать соответствие конституции и прослеживаемость требований.
+- Реализация должна проверяться наличием критерия приёмки и детерминированного запасного варианта.
+
+## Управление
+
+Изменения вносятся через коммит с описанием причины.
+При каждом изменении обновляются версия и дата.
+
+**Версия**: 1.0.0 | **Ратифицирована**: 2026-11-22 |
+**Последнее изменение**: 2026-11-22
