@@ -16,7 +16,7 @@
 
 **Language/Version**: Python 3.12, FastAPI; фронтенд React.
 
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+Primary Dependencies: FastAPI, SQLAlchemy, Alembic, Pydantic; openpyxl (XLSX/CSV); ReportLab или WeasyPrint (PDF); React.
 
 **Storage**: PostgreSQL 16.
 
